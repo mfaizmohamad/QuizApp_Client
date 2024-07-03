@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useEffect, useRef} from "react";
+
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -8,15 +8,9 @@ interface SidebarProps {
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   // const location = useLocation();
-  const { pathname } = location;
 
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
-
-  const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
-  const [sidebarExpanded, setSidebarExpanded] = useState(
-    storedSidebarExpanded === null ? false : storedSidebarExpanded === "true"
-  );
 
   // close on click outside
   useEffect(() => {
@@ -44,14 +38,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     return () => document.removeEventListener("keydown", keyHandler);
   });
 
-  useEffect(() => {
-    localStorage.setItem("sidebar-expanded", sidebarExpanded.toString());
-    if (sidebarExpanded) {
-      document.querySelector("body")?.classList.add("sidebar-expanded");
-    } else {
-      document.querySelector("body")?.classList.remove("sidebar-expanded");
-    }
-  }, [sidebarExpanded]);
 
   return (
     <aside

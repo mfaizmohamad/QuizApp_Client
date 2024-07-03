@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import endpoints from "../data/network/API_ENDPOINT";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
