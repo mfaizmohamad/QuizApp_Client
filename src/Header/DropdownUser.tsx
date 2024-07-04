@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import routingPath from "../routing/router_path";
+import { useNavigate } from "react-router-dom";
+
+
+const navigate = useNavigate();
+
 
 function Redirect() {
-  return (window.location.href = "/QuizApp_Client");
+  navigate(routingPath.login)
 }
 
 const DropdownUser = () => {
