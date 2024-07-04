@@ -1,7 +1,5 @@
 enum routingPath {
-    start = '/',
-    login = "/login",
-    loginProcss = "/login_process",
+    login = "/",
     questionBank = "/question_bank",
     addQuestion = "/add_question"
 }
