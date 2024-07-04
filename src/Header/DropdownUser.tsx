@@ -2,19 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import routingPath from "../routing/router_path";
 import { useNavigate } from "react-router-dom";
 
-
-const navigate = useNavigate();
-
-
-function Redirect() {
-  navigate(routingPath.login)
-}
-
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
+
+  const navigate = useNavigate();
+
+  function Redirect() {
+    navigate(routingPath.login);
+  }
 
   // close on click outside
   useEffect(() => {
@@ -59,7 +57,6 @@ const DropdownUser = () => {
           <span className="ease absolute right-0 top-0 h-0 w-0 border-r-2 border-primary transition-all duration-200 group-hover:h-full"></span>
           <span className="ease absolute bottom-0 right-0 h-0 w-0 border-b-2 border-primary transition-all duration-200 group-hover:w-full"></span>
           <span className="ease absolute bottom-0 left-0 h-0 w-0 border-l-2 border-primary transition-all duration-200 group-hover:h-full"></span>
-          
           Log Out
         </button>
       </div>
