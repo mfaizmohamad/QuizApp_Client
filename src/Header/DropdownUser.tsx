@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 function Redirect() {
-  return (window.location.href = "/");
+  return (window.location.href = "/QuizApp_Client");
 }
 
 const DropdownUser = () => {
