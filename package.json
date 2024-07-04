@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "http://mfaizmohamad.github.io/QuizApp_Client",
+  "proxy":"https://test-taking-api.gpsytech.com",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -17,7 +18,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.0",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "web-vitals": "^4.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

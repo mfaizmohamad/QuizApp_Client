@@ -1,52 +1,59 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
+
+import {toast} from 'react-toastify';
 
 import ApiResponseModel from '../../model/api_response';
 
-function HTTP () {}
+function HTTP() {
+}
 
-HTTP.API_URL = `https://quizappv2.onrender.com/api`;
-
-HTTP.GET = async (endpoint:string):Promise<ApiResponseModel> => {
-    console.log("Request # ",endpoint);
+HTTP.GET = async (endpoint: string): Promise<AxiosResponse> => {
     try {
-        var result = await axios.get(endpoint );
-        console.log("Response # ",result.data);
-        HTTP.SESSIONSTATUS(result.status);
-        return new ApiResponseModel({status:result.status,data:result.data,msg:result.statusText});
+        return await axios.get(endpoint);
     } catch (error) {
-        return new ApiResponseModel({status:500,data:undefined,msg:"Something went wrong!"});
+        throw error;
     }
 }
 
-HTTP.POST = async (endpoint:string, payload:any):Promise<ApiResponseModel> => {
-    console.log("Request # ",endpoint,payload);
+HTTP.LOGIN = async (endpoint: string, payload: any): Promise<AxiosResponse> => {
+    await axios.post(endpoint, payload)
+        .then((response) => {
+            console.log('header ' + response.headers.authorization)
+            if (response.headers.authorization) {
+                sessionStorage.setItem("std-db-token", response.headers.authorization);
+            }
+        })
+        .catch((error) => {
+            throw error;
+        });
+}
+
+HTTP.POST = async (endpoint: string, payload: any): Promise<AxiosResponse> => {
+    console.log("Request # ", endpoint, payload);
     try {
-        var result = await axios.post(endpoint,payload );
-        console.log("Response # ",result.data);
-        HTTP.SESSIONSTATUS(result.status);
-        return new ApiResponseModel({status:result.status,data:result.data,msg:result.statusText});
+        return await axios.post(endpoint, payload);
     } catch (error) {
-        return new ApiResponseModel({status:500,data:undefined,msg:"Something went wrong!"});
+        throw error;
     }
 }
 
-HTTP.MULTIMEDIA = async (endpoint:string, payload:any):Promise<ApiResponseModel> => {
-    console.log(endpoint,payload);
+HTTP.MULTIMEDIA = async (endpoint: string, payload: any): Promise<ApiResponseModel> => {
+    console.log("Request # ", endpoint, payload);
     try {
-        var result = await axios.post(endpoint,payload );
+        var result = await axios.post(endpoint, payload);
         HTTP.SESSIONSTATUS(result.status);
-        return new ApiResponseModel({status:result.status,data:result.data,msg:result.statusText});
+        console.log("Response # ", result.data);
+        return new ApiResponseModel({status: result.status, data: result.data, msg: result.statusText});
     } catch (error) {
-        return new ApiResponseModel({status:500,data:undefined,msg:"Something went wrong!"});
+        return new ApiResponseModel({status: 500, data: undefined, msg: "Something went wrong!"});
     }
 }
 
-HTTP.SESSIONSTATUS = async (status:number) => {
-    console.log(status,window.location);
-    if(status===403) {
-        localStorage.clear();
+HTTP.SESSIONSTATUS = async (status: number) => {
+    if (status === 403) {
         sessionStorage.clear();
-        // alert("Your session is out. Try to login again");
+        sessionStorage.clear();
+        toast.error("Your session is out. Try to login again");
         window.location.replace(window.location.origin);
     }
 }

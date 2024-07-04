@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DefaultLayout from "../layout/DefaultLayout";
 
 interface FormData {
   questionTitle: string;
@@ -77,7 +78,8 @@ const QuestionForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full rounded-md bg-gray-2 shadow-lg p-10 mb-10">
+    <DefaultLayout>
+    <div className="w-full rounded-md bg-gray-2 bg-opacity-25 text-white shadow-lg p-10 mb-10">
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6x">
         Add{" "}
         <mark className="px-4 mb-2 text-white bg-blue-600 rounded ">
@@ -269,6 +271,7 @@ const QuestionForm: React.FC = () => {
         theme="light"
       />
     </div>
+    </DefaultLayout>
   );
 };
 
