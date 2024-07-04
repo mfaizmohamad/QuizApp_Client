@@ -15,19 +15,6 @@ HTTP.GET = async (endpoint: string): Promise<AxiosResponse> => {
     }
 }
 
-HTTP.LOGIN = async (endpoint: string, payload: any): Promise<AxiosResponse> => {
-    await axios.post(endpoint, payload)
-        .then((response) => {
-            console.log('header ' + response.headers.authorization)
-            if (response.headers.authorization) {
-                sessionStorage.setItem("std-db-token", response.headers.authorization);
-            }
-        })
-        .catch((error) => {
-            throw error;
-        });
-}
-
 HTTP.POST = async (endpoint: string, payload: any): Promise<AxiosResponse> => {
     console.log("Request # ", endpoint, payload);
     try {
