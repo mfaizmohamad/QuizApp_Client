@@ -1,14 +1,10 @@
-import { useEffect,useContext, useState } from "react";
-import endpoints from '../data/network/API_ENDPOINT';
-import HTTP from '../data/network/HTTP';
-import { LoginModel } from '../model/login_model';
-import { UserContext } from '../context_provider/user_provider';
+import { useEffect, useState } from "react";
+
 
 import {
-  useLocation,
   useNavigate,
 } from 'react-router-dom';
-import { toast } from 'react-toastify';
+
 import routingPath from "../routing/router_path";
 
 const Login = () => {
@@ -18,11 +14,10 @@ const Login = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [letterIndex, setLetterIndex] = useState(0);
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  const ctx:any = useContext(UserContext);
 
-  function submitForm(event:any):void {
+  const navigate = useNavigate();
+
+  function submitForm( ):void {
     // console.log("here")
     // // @ts-ignore
     // console.log(import.meta.env.VITE_REACT_APP_API_BASE_URL) // "123"

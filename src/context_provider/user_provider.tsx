@@ -1,14 +1,12 @@
-import React, {
+import  {
   createContext,
   useEffect,
   useState,
 } from 'react';
 
 import {
-  useLocation,
   useNavigate,
 } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import routingPath from '../routing/router_path';
 
@@ -19,17 +17,16 @@ const UserProvider = ({ children }:any) => {
   const [busy, setBusy] = useState(false);
   const [user, _setUser] = useState({});
   const navigate = useNavigate();
-  const location = useLocation();
-  
+
   useEffect(()=>{
-    window.addEventListener('popstate', async function(event) {
+    window.addEventListener('popstate', async function() {
       window.history.go(1);
     });
     /*if(location.pathname===routingPath.selectTest)
       checkLogin();*/
   },[]);
 
-  const setToken=(tmp:any,flag=true)=>{
+  const setToken=(tmp:any)=>{
     console.log(tmp + " was set");
     sessionStorage.setItem("token",tmp);
     _setToken(tmp);
