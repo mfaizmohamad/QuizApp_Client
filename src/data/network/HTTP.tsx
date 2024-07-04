@@ -1,46 +1,51 @@
-import axios, {AxiosResponse} from 'axios';
-
-import {toast} from 'react-toastify';
+import axios from 'axios';
 
 import ApiResponseModel from '../../model/api_response';
 
-function HTTP() {
-}
+function HTTP () {}
 
-HTTP.GET = async (endpoint: string): Promise<AxiosResponse> => {
-    try {
-        return await axios.get(endpoint);
-    } catch (error) {
-        throw error;
-    }
-}
 
-HTTP.POST = async (endpoint: string, payload: any): Promise<AxiosResponse> => {
-    console.log("Request # ", endpoint, payload);
+HTTP.GET = async (endpoint:string):Promise<ApiResponseModel> => {
+    console.log("Request # ",endpoint);
     try {
-        return await axios.post(endpoint, payload);
-    } catch (error) {
-        throw error;
-    }
-}
-
-HTTP.MULTIMEDIA = async (endpoint: string, payload: any): Promise<ApiResponseModel> => {
-    console.log("Request # ", endpoint, payload);
-    try {
-        var result = await axios.post(endpoint, payload);
+        var result = await axios.get(endpoint );
+        console.log("Response # ",result.data);
         HTTP.SESSIONSTATUS(result.status);
-        console.log("Response # ", result.data);
-        return new ApiResponseModel({status: result.status, data: result.data, msg: result.statusText});
+        return new ApiResponseModel({status:result.status,data:result.data,msg:result.statusText});
     } catch (error) {
-        return new ApiResponseModel({status: 500, data: undefined, msg: "Something went wrong!"});
+        return new ApiResponseModel({status:500,data:undefined,msg:"Something went wrong!"});
     }
 }
 
-HTTP.SESSIONSTATUS = async (status: number) => {
-    if (status === 403) {
+HTTP.POST = async (endpoint:string, payload:any):Promise<ApiResponseModel> => {
+    console.log("Request # ",endpoint,payload);
+    try {
+        var result = await axios.post(endpoint,payload );
+        console.log("Response # ",result.data);
+        HTTP.SESSIONSTATUS(result.status);
+        return new ApiResponseModel({status:result.status,data:result.data,msg:result.statusText});
+    } catch (error) {
+        return new ApiResponseModel({status:500,data:undefined,msg:"Something went wrong!"});
+    }
+}
+
+HTTP.MULTIMEDIA = async (endpoint:string, payload:any):Promise<ApiResponseModel> => {
+    console.log(endpoint,payload);
+    try {
+        var result = await axios.post(endpoint,payload );
+        HTTP.SESSIONSTATUS(result.status);
+        return new ApiResponseModel({status:result.status,data:result.data,msg:result.statusText});
+    } catch (error) {
+        return new ApiResponseModel({status:500,data:undefined,msg:"Something went wrong!"});
+    }
+}
+
+HTTP.SESSIONSTATUS = async (status:number) => {
+    console.log(status,window.location);
+    if(status===403) {
+        localStorage.clear();
         sessionStorage.clear();
-        sessionStorage.clear();
-        toast.error("Your session is out. Try to login again");
+        // alert("Your session is out. Try to login again");
         window.location.replace(window.location.origin);
     }
 }

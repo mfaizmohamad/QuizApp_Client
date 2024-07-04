@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "http://mfaizmohamad.github.io/QuizApp_Client",
-  "proxy":"https://test-taking-api.gpsytech.com",
+  "proxy":"https://localhost:8080",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
