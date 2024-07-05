@@ -17,7 +17,6 @@ interface FormData {
 
 const Examination: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [questions, setQuestions] = useState<FormData[]>([]);
 
   const navigate = useNavigate();
@@ -69,7 +68,7 @@ const Examination: React.FC = () => {
   }
   return (
     <div className="relative  flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-      <Header_Exam sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <Header_Exam/>
       <div className="flex justify-center">
         <ul className="mt-10 flex w-[50rem] flex-wrap gap-5 rounded-md bg-opacity-25 text-black">
           <li
