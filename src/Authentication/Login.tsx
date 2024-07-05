@@ -50,7 +50,7 @@ const Login = () => {
 
   const postQuestion = async (payload: FormData) => {
     try {
-      const response = await fetch("http://quizappv2.onrender.com/login", {
+      const response = await fetch("https://quizappv2.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

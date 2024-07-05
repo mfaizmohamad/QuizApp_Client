@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "../Header";
 import { useNavigate } from "react-router-dom";
 import routingPath from "../routing/router_path";
+import Header_Exam from "../Header/Header_Exam";
 
 interface FormData {
   questionTitle: string;
@@ -19,7 +19,6 @@ const Examination: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [questions, setQuestions] = useState<FormData[]>([]);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
   const navigate = useNavigate();
 
@@ -31,7 +30,7 @@ const Examination: React.FC = () => {
     try {
       const token = sessionStorage.getItem("jwtToken");
       const response = await fetch(
-        "http://quizappv2.onrender.com/question/allQuestions",
+        "https://quizappv2.onrender.com/question/allQuestions",
         {
           method: "GET",
           headers: {
@@ -52,9 +51,6 @@ const Examination: React.FC = () => {
     }
   };
 
-  const handleOptionSelect = (optionIndex: number) => {
-    setSelectedOption(optionIndex);
-  };
 
   const goToNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -72,64 +68,40 @@ const Examination: React.FC = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <ul className="fle flex-wrap gap-5 rounded-md bg-opacity-25 text-black">
-        <li
-          key={currentQuestionIndex}
-          className="mt-5 w-full p-5 grid justify-center "
-        >
-          <h3 className="font-bold mb-3">
-            <span className="mr-2">Q{questions[currentQuestionIndex].id}</span>
-            {questions[currentQuestionIndex].questionTitle}
-          </h3>
-          <label>
-            <input
-              className="mr-2"
-              type="radio"
-              name="option"
-              checked={selectedOption === 1}
-              onChange={() => handleOptionSelect(1)}
-            />
-            {questions[currentQuestionIndex].option1}
-          </label>
-          <label>
-            <input
-              className="mr-2"
-              type="radio"
-              name="option"
-              checked={selectedOption === 2}
-              onChange={() => handleOptionSelect(2)}
-            />
-            {questions[currentQuestionIndex].option2}
-          </label>
-          <label>
-            <input
-              className="mr-2"
-              type="radio"
-              name="option"
-              checked={selectedOption === 3}
-              onChange={() => handleOptionSelect(3)}
-            />
-            {questions[currentQuestionIndex].option3}
-          </label>
-          <label>
-            <input
-              className="mr-2 mb-5"
-              type="radio"
-              name="option"
-              checked={selectedOption === 4}
-              onChange={() => handleOptionSelect(4)}
-            />
-            {questions[currentQuestionIndex].option4}
-          </label>
-          {/* <p>Right Answer: {questions[currentQuestionIndex].rightAnswer}</p> */}
-          <p>
-            Difficulty Level: {questions[currentQuestionIndex].difficultylevel}
-          </p>
-          <p>Category: {questions[currentQuestionIndex].category}</p>
-        </li>
-      </ul>
+    <div className="relative  flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+      <Header_Exam sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <div className="flex justify-center">
+        <ul className="mt-10 flex w-[50rem] flex-wrap gap-5 rounded-md bg-opacity-25 text-black">
+          <li
+            key={currentQuestionIndex}
+            className="mt-5 w-full p-5 grid"
+          >
+            <h3 className="font-bold mb-3">
+              <span className="mr-2">Q{questions[currentQuestionIndex].id}</span>
+              {questions[currentQuestionIndex].questionTitle}
+            </h3>
+            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+              A. {questions[currentQuestionIndex].option1}
+            </div>
+            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+              B. {questions[currentQuestionIndex].option2}
+            </div>
+            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+              C. {questions[currentQuestionIndex].option3}
+            </div>
+            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+              D. {questions[currentQuestionIndex].option4}
+            </div>
+            {/* <p>Right Answer: {questions[currentQuestionIndex].rightAnswer}</p> */}
+            <div className="flex gap-3 mt-5">
+              <p className="p-2 bg-green-700 text-white rounded-md">
+                 Level: {questions[currentQuestionIndex].difficultylevel}
+              </p >
+              <p className="p-2 bg-yellow-700 text-white rounded-md">Category: {questions[currentQuestionIndex].category}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
       {currentQuestionIndex < questions.length - 1 && (
         <div className="flex gap-5 justify-center mt-5">
           <button
