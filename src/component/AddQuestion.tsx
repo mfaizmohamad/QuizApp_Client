@@ -65,7 +65,7 @@ const QuestionForm: React.FC = () => {
 
   const postQuestion = async (payload: FormData) => {
     const response = await fetch(
-      "https://quizappv2.onrender.com/question/add",
+      "http://quizappv2.onrender.com/question/add",
       {
         method: "POST",
         headers: {

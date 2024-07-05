@@ -24,7 +24,7 @@ const AllQuestion: React.FC = () => {
   const fetchQuestions = async () => {
     try {
       const response = await fetch(
-        "https://quizappv2.onrender.com/question/allQuestions"
+        "http://quizappv2.onrender.com/question/allQuestions"
       );
       if (response.ok) {
         const data = await response.json();
