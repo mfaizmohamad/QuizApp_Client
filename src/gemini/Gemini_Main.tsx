@@ -39,19 +39,19 @@ const Gemini_Main: React.FC = () => {
               <p>How can I help you today? </p>
             </div>
             <div className="cards sm:mb-0 mb-10">
-              <div className="card">
+              <div className="card hidden sm:block">
                 <p>Suggest beautiful places to see on an upcoming road trip</p>
                 <img src={assets.compass_icon} alt="Compass Icon" />
               </div>
-              <div className="card">
+              <div className="card hidden sm:block">
                 <p>Briefly summarize this concept: urban planning</p>
                 <img src={assets.bulb_icon} alt="Bulb Icon" />
               </div>
-              <div className="card">
+              <div className="card hidden sm:block">
                 <p>Brainstorm team bonding activities for our work retreat</p>
                 <img src={assets.message_icon} alt="Message Icon" />
               </div>
-              <div className="card">
+              <div className="card hidden sm:block">
                 <p>Improve the readability of the following code</p>
                 <img src={assets.code_icon} alt="Code Icon" />
               </div>

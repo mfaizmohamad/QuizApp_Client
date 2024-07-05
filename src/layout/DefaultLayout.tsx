@@ -12,7 +12,7 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
         <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           <main>
-            <div className="area sm:h-[90.2vh] w-[100%] h-[300rem]">
+            <div className="area h-[90.2vh] w-[100%]">
               <ul className="circles">
                 <li></li>
                 <li></li>
