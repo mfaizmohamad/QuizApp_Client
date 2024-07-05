@@ -50,7 +50,7 @@ const AllQuestion: React.FC = () => {
   return (
     <DefaultLayout>
       <div>
-        <h1 className="mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5x">
+        <h1 className="mb-4 text-xl font-extrabold leading-none tracking-tight text-white md:text-4xl lg:text-5x">
           Question{" "}
           <span className="underline underline-offset-3 decoration-8 decoration-blue-400">
             List
