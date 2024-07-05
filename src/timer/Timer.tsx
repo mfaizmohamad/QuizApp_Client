@@ -47,7 +47,7 @@ const Timer: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full rounded-2xl flex gap-9 flex-col items-center justify-center bg-cover bg-center">
+    <div className="w-full mr-[-1rem] rounded-2xl flex gap-9 flex-col items-center justify-center bg-cover bg-center">
       <div className="flex items-start justify-center w-full gap-1.5 count-down-main">
         <div className="timer">
           <div className="rounded-xl shadow-lg bg-[#36454F] backdrop-blur-sm py-3 min-w-[96px] flex items-center justify-center flex-col gap-1 px-3">

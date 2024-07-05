@@ -115,7 +115,6 @@ html {
 .area {
 	background: #113e67;
 	background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
-	width: 100%;
 	position: absolute;
 	z-index: -1;
 }

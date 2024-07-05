@@ -25,7 +25,8 @@ const Gemini_Main: React.FC = () => {
     <DefaultLayout>
     <div className="main">
       <div className="nav">
-        <p>Gemini</p>
+      <h1 className="mb-4 text-2xl font-extrabold text-gray-900 dark:text-white md:text-2xl lg:text-3xl">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Gemini</span> AI.</h1>
         <img src={assets.user_icon} alt="User Icon" />
       </div>
       <div className="main-container">
@@ -37,7 +38,7 @@ const Gemini_Main: React.FC = () => {
               </p>
               <p>How can I help you today? </p>
             </div>
-            <div className="cards">
+            <div className="cards sm:mb-0 mb-10">
               <div className="card">
                 <p>Suggest beautiful places to see on an upcoming road trip</p>
                 <img src={assets.compass_icon} alt="Compass Icon" />
@@ -86,7 +87,6 @@ const Gemini_Main: React.FC = () => {
               placeholder="Enter a prompt here"
             />
             <div>
-              <img src={assets.gallery_icon} alt="Gallery Icon" />
               <img src={assets.mic_icon} alt="Mic Icon" />
               <img onClick={() => onSent()} src={assets.send_icon} alt="Send Icon" />
             </div>

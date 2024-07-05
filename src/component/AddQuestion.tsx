@@ -82,13 +82,8 @@ const QuestionForm: React.FC = () => {
   return (
     <DefaultLayout>
     <div className="w-full rounded-md bg-gray bg-opacity-25 text-white shadow-lg p-10 mb-10">
-      <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6x">
-        Add{" "}
-        <mark className="px-4 mb-2 text-white bg-blue-600 rounded ">
-          Question
-        </mark>{" "}
-        Form
-      </h1>
+    <h1 className="mb-4 text-2xl font-extrabold text-white dark:text-white md:text-2xl lg:text-3xl">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Add Question</span> Form.</h1>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6">
           <div>
