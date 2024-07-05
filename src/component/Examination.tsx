@@ -29,6 +29,7 @@ interface Question {
 const Examination: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [questions, setQuestions] = useState<FormData[]>([]);
+  const [clickedOption, setClickedOption] = useState(null);
 
   const navigate = useNavigate();
 
@@ -38,12 +39,7 @@ const Examination: React.FC = () => {
     throw new Error("Gemini_Main must be used within a ContextProvider");
   }
 
-  const {
-    onSent,
-    loading,
-    resultData,
-    setInput,
-  } = context;
+  const { onSent, loading, resultData, setInput } = context;
 
   useEffect(() => {
     fetchQuestions();
@@ -74,14 +70,14 @@ const Examination: React.FC = () => {
     }
   };
 
-
-
   const goToNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    setClickedOption(null)
   };
 
   const prevQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+    setClickedOption(null)
   };
 
   const completeQuestion = () => {
@@ -91,7 +87,6 @@ const Examination: React.FC = () => {
   if (questions.length === 0) {
     return <div>Loading...</div>;
   }
-
 
   const question: Question = {
     questionTitle: questions[currentQuestionIndex].questionTitle,
@@ -106,24 +101,24 @@ const Examination: React.FC = () => {
 
   setInput(questionString);
 
-  const answer = () => {
+  const answer = (option:any) => {
     onSent();
+    setClickedOption(option);
   };
 
   return (
     <div className="relative  flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
       <Header_Exam />
 
-        <div className="flex justify-center  gap-[30rem] mt-5">
-                <p className="p-2 bg-green-700 text-white rounded-md">
-                  Level: {questions[currentQuestionIndex].difficultylevel}
-                </p>
-                <p className="p-2 bg-yellow-700 text-white rounded-md">
-                  Category: {questions[currentQuestionIndex].category}
-                </p>
-              </div>
-        <div className="flex justify-center">
-
+      <div className="flex justify-around mt-5">
+        <p className="p-2 bg-green-700 text-white rounded-md">
+          Level: {questions[currentQuestionIndex].difficultylevel}
+        </p>
+        <p className="p-2 bg-yellow-700 text-white rounded-md">
+          Category: {questions[currentQuestionIndex].category}
+        </p>
+      </div>
+      <div className="flex justify-center">
         <ul className="mt-10 flex w-[50rem] flex-wrap gap-5 rounded-md bg-opacity-25 text-black">
           <li key={currentQuestionIndex} className="mt-5 w-full p-5 grid">
             <h3 className="font-bold mb-3">
@@ -132,20 +127,47 @@ const Examination: React.FC = () => {
               </span>
               {questions[currentQuestionIndex].questionTitle}
             </h3>
-            <div onClick={() => answer()} className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
+            <div
+              onClick={() => answer("A")}
+              className={`p-1 w-[20rem] cursor-pointer rounded-md ${
+                clickedOption === "A"
+                  ? "bg-slate-500 text-white"
+                  : "hover:bg-slate-500 hover:text-white"
+              }`}
+            >
               A. {questions[currentQuestionIndex].option1}
             </div>
-            <div onClick={() => answer()} className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
+            <div
+              onClick={() => answer("B")}
+              className={`p-1 w-[20rem] cursor-pointer rounded-md ${
+                clickedOption === "B"
+                  ? "bg-slate-500 text-white"
+                  : "hover:bg-slate-500 hover:text-white"
+              }`}
+            >
               B. {questions[currentQuestionIndex].option2}
             </div>
-            <div  onClick={() => answer()} className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
+            <div
+              onClick={() => answer("C")}
+              className={`p-1 w-[20rem] cursor-pointer rounded-md ${
+                clickedOption === "C"
+                  ? "bg-slate-500 text-white"
+                  : "hover:bg-slate-500 hover:text-white"
+              }`}
+            >
               C. {questions[currentQuestionIndex].option3}
             </div>
-            <div  onClick={() => answer()} className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
+            <div
+              onClick={() => answer("D")}
+              className={`p-1 w-[20rem] cursor-pointer rounded-md ${
+                clickedOption === "D"
+                  ? "bg-slate-500 text-white"
+                  : "hover:bg-slate-500 hover:text-white"
+              }`}
+            >
               D. {questions[currentQuestionIndex].option4}
             </div>
             {/* <p>Right Answer: {questions[currentQuestionIndex].rightAnswer}</p> */}
-
           </li>
         </ul>
       </div>
@@ -176,7 +198,7 @@ const Examination: React.FC = () => {
           </button>
         </div>
       )}
-      <div className="result mt-10" >
+      <div className="result mt-10">
         <div className="result-data">
           <img src={assets.gemini_icon} alt="Gemini Icon" />
           {loading ? (
@@ -186,7 +208,10 @@ const Examination: React.FC = () => {
               <hr />
             </div>
           ) : (
-            <p className="text-black" dangerouslySetInnerHTML={{ __html: resultData }}></p>
+            <p
+              className="text-black"
+              dangerouslySetInnerHTML={{ __html: resultData }}
+            ></p>
           )}
         </div>
       </div>
