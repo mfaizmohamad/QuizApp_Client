@@ -60,9 +60,9 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("data >>>",data)
-        const token = data.token; 
-        sessionStorage.setItem('jwtToken', token);
+        console.log("data >>>", data);
+        const token = data.token;
+        sessionStorage.setItem("jwtToken", token);
         navigate(routingPath.startExam);
       } else {
         console.log("Failed to login.");
@@ -74,7 +74,6 @@ const Login = () => {
       throw error;
     }
   };
-
 
   useEffect(() => {
     const type = () => {
@@ -119,8 +118,11 @@ const Login = () => {
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-black bg-opacity-80  rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-white">
-              Question Bank
+            <h1 className="mb-4 text-center text-2xl font-extrabold text-white dark:text-white md:text-2xl lg:text-3xl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+                Exam
+              </span>{" "}
+              AI
             </h1>
             <form
               className="space-y-4 md:space-y-6"
@@ -172,17 +174,17 @@ const Login = () => {
         </div>
       </div>
       <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </section>
   );
 };

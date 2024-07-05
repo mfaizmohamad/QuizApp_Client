@@ -53,7 +53,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <NavLink to="/question_bank">
-          <h1 className="font-white">Quiz APP</h1>
+        <h1 className="mb-4 text-2xl font-extrabold text-white dark:text-white md:text-2xl lg:text-3xl">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+            EXAM
+          </span>{" "}
+          AI
+        </h1>
         </NavLink>
 
         <button
