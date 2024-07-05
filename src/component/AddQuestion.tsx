@@ -66,7 +66,7 @@ const QuestionForm: React.FC = () => {
   const postQuestion = async (payload: FormData) => {
     const token = sessionStorage.getItem('jwtToken');
     const response = await fetch(
-      "https://quizappv2.onrender.com/question/add",
+      "http://quizappv2.onrender.com//question/add",
       {
         method: "POST",
         headers: {
@@ -102,10 +102,9 @@ const QuestionForm: React.FC = () => {
               type="text"
               name="questionTitle"
               value={formData.questionTitle}
-              placeholder="Question Title"
               onChange={handleChange}
               id="first_name"
-              className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg
+              className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black text-sm rounded-lg
                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               required
             />
@@ -122,10 +121,9 @@ const QuestionForm: React.FC = () => {
                 type="text"
                 name="option1"
                 value={formData.option1}
-                placeholder="Option 1"
                 onChange={handleChange}
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg
+                className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -141,10 +139,9 @@ const QuestionForm: React.FC = () => {
                 name="option2"
                 type="text"
                 value={formData.option2}
-                placeholder="Option 2"
                 onChange={handleChange}
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
+                className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -162,10 +159,9 @@ const QuestionForm: React.FC = () => {
                 name="option3"
                 type="text"
                 value={formData.option3}
-                placeholder="Option 3"
                 onChange={handleChange}
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
+                className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -182,9 +178,8 @@ const QuestionForm: React.FC = () => {
                 name="option4"
                 value={formData.option4}
                 onChange={handleChange}
-                placeholder="Option 4"
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
+                className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -202,9 +197,8 @@ const QuestionForm: React.FC = () => {
               name="rightAnswer"
               value={formData.rightAnswer}
               onChange={handleChange}
-              placeholder="Right Answer"
               id="first_name"
-              className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
+              className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black  text-sm rounded-lg
                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               required
             />
@@ -222,9 +216,8 @@ const QuestionForm: React.FC = () => {
                 name="difficultylevel"
                 value={formData.difficultylevel}
                 onChange={handleChange}
-                placeholder="Difficulty Level"
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
+                className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -241,9 +234,8 @@ const QuestionForm: React.FC = () => {
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                placeholder="Category"
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg
+                className="bg-gray-2 bg-opacity-50 border border-gray-300 text-black text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />

@@ -50,7 +50,7 @@ const Login = () => {
 
   const postQuestion = async (payload: FormData) => {
     try {
-      const response = await fetch("https://quizappv2.onrender.com/login", {
+      const response = await fetch("http://quizappv2.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const Login = () => {
         console.log("data >>>",data)
         const token = data.token; 
         sessionStorage.setItem('jwtToken', token);
-        navigate(routingPath.questionBank);
+        navigate(routingPath.startExam);
       } else {
         console.log("Failed to login.");
       }
