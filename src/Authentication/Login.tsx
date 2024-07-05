@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import routingPath from "../routing/router_path";
+import { ToastContainer, toast } from "react-toastify";
 
 interface FormData {
   login: string;
@@ -36,9 +37,11 @@ const Login = () => {
     try {
       const response = await postQuestion(formData);
       if (response.ok) {
-        console.log("Question posted successfully!");
+        console.log("Login successfully!");
+        toast.success("Login successfully!");
       } else {
-        console.log("Failed to post question.");
+        console.log("Failed to Login.");
+        toast.error("Invalid Credential");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -47,19 +50,24 @@ const Login = () => {
 
   const postQuestion = async (payload: FormData) => {
     try {
-      const response = await fetch("http://quizappv2.onrender.com/login", {
+      const response = await fetch("https://quizappv2.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
-  
+
       if (response.ok) {
-        console.log("response>>" , response)
+        const data = await response.json();
+        console.log("data >>>",data)
+        const token = data.token; 
+        sessionStorage.setItem('jwtToken', token);
         navigate(routingPath.questionBank);
+      } else {
+        console.log("Failed to login.");
       }
-  
+
       return response;
     } catch (error) {
       console.error("Error:", error);
@@ -163,6 +171,18 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
     </section>
   );
 };

@@ -64,12 +64,14 @@ const QuestionForm: React.FC = () => {
   };
 
   const postQuestion = async (payload: FormData) => {
+    const token = sessionStorage.getItem('jwtToken');
     const response = await fetch(
-      "http://quizappv2.onrender.com/question/add",
+      "https://quizappv2.onrender.com/question/add",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(payload),
       }
@@ -103,7 +105,7 @@ const QuestionForm: React.FC = () => {
               placeholder="Question Title"
               onChange={handleChange}
               id="first_name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+              className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg
                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               required
             />
@@ -123,7 +125,7 @@ const QuestionForm: React.FC = () => {
                 placeholder="Option 1"
                 onChange={handleChange}
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -142,7 +144,7 @@ const QuestionForm: React.FC = () => {
                 placeholder="Option 2"
                 onChange={handleChange}
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -163,7 +165,7 @@ const QuestionForm: React.FC = () => {
                 placeholder="Option 3"
                 onChange={handleChange}
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -182,7 +184,7 @@ const QuestionForm: React.FC = () => {
                 onChange={handleChange}
                 placeholder="Option 4"
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -202,7 +204,7 @@ const QuestionForm: React.FC = () => {
               onChange={handleChange}
               placeholder="Right Answer"
               id="first_name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+              className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               required
             />
@@ -222,7 +224,7 @@ const QuestionForm: React.FC = () => {
                 onChange={handleChange}
                 placeholder="Difficulty Level"
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                className="bg-gray-50 border border-gray-300 text-black  text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />
@@ -241,7 +243,7 @@ const QuestionForm: React.FC = () => {
                 onChange={handleChange}
                 placeholder="Category"
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg
                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
               />

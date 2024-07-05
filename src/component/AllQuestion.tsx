@@ -23,9 +23,14 @@ const AllQuestion: React.FC = () => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch(
-        "http://quizappv2.onrender.com/question/allQuestions"
-      );
+      const token = sessionStorage.getItem('jwtToken');
+      const response = await fetch("https://quizappv2.onrender.com/question/allQuestions", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (response.ok) {
         const data = await response.json();
         setQuestions(data);
