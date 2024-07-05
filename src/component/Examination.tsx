@@ -42,7 +42,7 @@ const Examination: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         setQuestions(data);
-        setCurrentQuestionIndex(0); // Initialize current question index to start from the first question
+        setCurrentQuestionIndex(0); 
       } else {
         console.log("Failed to get questions");
       }
@@ -80,16 +80,16 @@ const Examination: React.FC = () => {
               <span className="mr-2">Q{questions[currentQuestionIndex].id}</span>
               {questions[currentQuestionIndex].questionTitle}
             </h3>
-            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+            <div className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
               A. {questions[currentQuestionIndex].option1}
             </div>
-            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+            <div className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
               B. {questions[currentQuestionIndex].option2}
             </div>
-            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+            <div className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
               C. {questions[currentQuestionIndex].option3}
             </div>
-            <div className="p-1 w-[20rem] hover:bg-slate-500 rounded-md hover:text-white">
+            <div className="p-1 w-[20rem] cursor-pointer hover:bg-slate-500 rounded-md hover:text-white">
               D. {questions[currentQuestionIndex].option4}
             </div>
             {/* <p>Right Answer: {questions[currentQuestionIndex].rightAnswer}</p> */}
@@ -126,7 +126,7 @@ const Examination: React.FC = () => {
             className="bg-green-500 w-[10rem] hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             onClick={completeQuestion}
           >
-            Complete{" "}
+            Finish{" "}
           </button>
         </div>
       )}
