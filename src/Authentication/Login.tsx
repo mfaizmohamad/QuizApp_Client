@@ -102,7 +102,7 @@ const Login = () => {
   }, [currentWordIndex, currentText, isDeleting, letterIndex]);
   return (
     <section className="">
-      <div className="area">
+      <div className="area h-[100vh]">
         <ul className="circles">
           <li></li>
           <li></li>

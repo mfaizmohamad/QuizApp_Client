@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { PiExamFill } from "react-icons/pi";
 import { MdAddBox } from "react-icons/md";
 import { FaListAlt } from "react-icons/fa";
+import { SiGooglegemini } from "react-icons/si";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -118,7 +119,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li>
               {/* <!-- Result --> */}
-              {/* <!-- Tableau Dashboard --> */}
+              {/* <!-- Question Bank --> */}
               <li>
                 <NavLink
                   to="/question_bank"
@@ -131,7 +132,21 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   Question Bank
                 </NavLink>
               </li>
-              {/* <!-- Tableau Dashboard --> */}
+              {/* <!-- Question Bank --> */}
+              {/* <!-- Gemini --> */}
+              <li className=" absolute bottom-0 mb-20 w-[15rem]">
+                <NavLink
+                  to="/gemini"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("gemini") &&
+                    "bg-graydark dark:bg-meta-4"
+                  }`}
+                >
+                  <SiGooglegemini className="text-[1.3rem]" />
+                  Gemini
+                </NavLink>
+              </li>
+              {/* <!-- Gemini--> */}
 
               {/* <!-- Menu Item Settings --> */}
             </ul>

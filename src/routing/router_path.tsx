@@ -3,6 +3,7 @@ enum routingPath {
     questionBank = "/question_bank",
     addQuestion = "/add_question",
     examination ="/examination",
-    startExam ="/start_exam"
+    startExam ="/start_exam",
+    gemini = "gemini"
 }
 export default routingPath;
